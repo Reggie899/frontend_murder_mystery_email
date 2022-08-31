@@ -7,13 +7,14 @@ const navigationBarItems = <div className="menu">
     <div>Unread</div>
     <div>Spam</div>
     <div>Deleted</div>
-
+    {/* <div>
+<input type="search"/></div> */}
 </div>
 
 function HomeComponent() {
   return (
     <div className="home">
-      <container>
+      <div className="container">
         <div className="sidebar">
             <Mails />
         </div>
@@ -23,7 +24,7 @@ function HomeComponent() {
               </div> 
           <div className="mailview"></div>
         </div>
-      </container>
+      </div>
     </div>
   );
 }

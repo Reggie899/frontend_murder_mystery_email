@@ -29,21 +29,21 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-      //  axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`, values)
-      //  .then(response => {
-      //  return response 
-        //}
-        setSuccess(true);
-       navigate("/home");
-// //        )
-        // .then(response => {
-        //     if(response.statusText === "OK") { 
-        //     localStorage.setItem("accessToken", response.data.token); navigate("/home"); 
-        //     return response
-        // }})
-        // .then (response => {console.log(response); return response})
-        // .then(response => console.log(response.data.token))
-        // .catch(err => console.log(err))
+       axios.post(`${process.env.REACT_APP_BASE_URL}/login`, values)
+       .then(response => {
+       return response 
+        }
+    //     setSuccess(true);
+    //    navigate("/home");
+       )
+        .then(response => {
+            if(response.statusText === "OK") { 
+            localStorage.setItem("accessToken", response.data.token); navigate("/home"); 
+            return response
+        }})
+        .then (response => {console.log(response); return response})
+        .then(response => console.log(response.data.token))
+        .catch(err => console.log(err))
           };
 
     return (

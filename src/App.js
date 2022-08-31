@@ -6,6 +6,7 @@ import HomeComponent from './components/HomeComponent.js';
 import { useNavigate } from 'react-router';
 
 import { Routes, Route } from "react-router";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         {/* <Login /> */}
       <Routes>
       <Route path='/' element={<Login />}/>
+            <Route path="/register" element={<Register/>} />
+
       <Route path="/home" element={<HomeComponent/>} />
       </Routes>
 

@@ -55,7 +55,7 @@ button {
   width: 100px;
 }
 
-container {
+.container {
   border: 2px solid gold;
   height: 400px;
   width: 80%;
@@ -63,13 +63,13 @@ container {
   flex-direction: row;
 }
 
-container .sidebar {
+.container .sidebar {
   border: 2px solid gold;
   height: 100%;
   width: 35%;
 }
 
-container .rightside {
+.container .rightside {
   display: flex;
   flex-direction: column;
   width: 100%;
