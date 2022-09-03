@@ -91,7 +91,9 @@ button {
   justify-content: space-evenly;
 }
 
-.mailview {
+.spinner {
+  height: 50px;
+  width: auto;
 }
 
 @keyframes App-logo-spin {

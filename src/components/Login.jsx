@@ -1,69 +1,86 @@
-import { useState } from 'react';
+import { useState } from "react";
 import axios from "axios";
 import logo from "../crowdmail.png";
-
+import spinner from "../spinner.svg";
+import { useNavigate } from "react-router";
 
 // import HomeComponent from './HomeComponent.js';
 // import { Routes, Route } from "react-router";
 
- 
-
 // Fetchers
-import { useNavigate } from 'react-router';
 
-const Login = () => {
-    const [values, setValues] = useState({  email: "", password: "" });
-    const navigate = useNavigate();
+const Login = ({ setSuccess, success, setValues, values }) => {
+  const navigate = useNavigate();
 
+  const [error, setError] = useState("");
 
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    const inputName = e.target.name;
 
-    const [success, setSuccess] = useState(false)
+    setValues((val) => ({ ...val, [inputName]: inputValue }));
+  };
 
-
-    const handleChange = (e) => {
-        const inputValue = e.target.value
-        const inputName = e.target.name
-
-        setValues((val) => ({ ...val, [inputName]: inputValue }))
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     //    axios.post(`${process.env.REACT_APP_BASE_URL}/login`, values)
-       axios.post(`https://backend-murder-mystery.herokuapp.com/login`, values)
-       .then(response => {
-       return response 
-        }
-    //     setSuccess(true);
-    //    navigate("/home");
-       )
-        .then(response => {
-            if(response.statusText === "OK") { 
-            localStorage.setItem("accessToken", response.data.token); navigate("/home"); 
-            return response
-        }})
-        .then (response => {console.log(response); return response})
-        .then(response => console.log(response.data.token))
-        .catch(err => console.log(err))
-          };
 
-    return (
-        <>
-          <header className="App-header">
+    axios
+      .post(`https://backend-murder-mystery.herokuapp.com/login`, values)
+      .then(
+        (response) => {
+          return response;
+        }
+        //     setSuccess(true);
+        //    navigate("/home");
+      )
+      .then((response) => {
+        if (response.statusText === "OK") {
+          localStorage.setItem("accessToken", response.data.token);
+          setSuccess(true);
+          navigate("/home");
+          return response;
+        }
+      })
+      .then((response) => {
+        console.log(response);
+        return response;
+      })
+      .then((response) => console.log(response.data.token))
+      .catch((err) => setError(err.response.data.message));
+  };
+
+  const alertHello = () =>{alert("hello")}
+
+  return (
+    <>
+      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <form>
-            <input value={values.email} onChange={handleChange} name="email" type='email' placeholder="Email" />
-            <input value={values.password} onChange={handleChange} name="password" type='password' placeholder="Password" />
-            <button onClick={handleSubmit}>Login</button>
+          <input
+            value={values.email}
+            onChange={handleChange}
+            name="email"
+            type="email"
+            placeholder="Email"
+            // autoFocus
+            // onFocus={e => e.currentTarget.select()}         
+             />
+          <input
+            value={values.password}
+            onChange={handleChange}
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
+          <button onClick={handleSubmit}>Login</button>
         </form>
-        {success ? <p>Successfully logged in!</p> : null}
+        {/* {success ? <p>Successfully logged in!</p> : null} */}
+        {success ? <img src={spinner} className="spinner" /> : null}
+        {success ? null : error}
+      </header>
+    </>
+  );
+};
 
-        </header>
-
-      
-        </>
-
-    )
-}
-
-export default Login
+export default Login;

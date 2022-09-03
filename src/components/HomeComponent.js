@@ -1,5 +1,7 @@
 import React from "react";
 import Mails from "./Mails";
+import Logout from './Logout';
+
 
 const navigationBarItems = <div className="menu">
     <div>All</div>
@@ -11,9 +13,11 @@ const navigationBarItems = <div className="menu">
 <input type="search"/></div> */}
 </div>
 
-function HomeComponent() {
+function HomeComponent({setSuccess, setValues}) {
+
   return (
     <div className="home">
+        <Logout setSuccess={setSuccess} setValues={setValues}/>
       <div className="container">
         <div className="sidebar">
             <Mails />

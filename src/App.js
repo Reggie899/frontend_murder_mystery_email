@@ -1,14 +1,29 @@
 
 import "./App.css";
+import { useState, useEffect } from 'react';
+import { Routes, Route } from "react-router";
+
 import Login from "./components/Login.jsx";
 
-import HomeComponent from './components/HomeComponent.js';
-import { useNavigate } from 'react-router';
 
-import { Routes, Route } from "react-router";
+import HomeComponent from './components/HomeComponent.js';
+
 import Register from "./components/Register";
 
+
 function App() {
+  const [values, setValues] = useState({  email: "", password: "" });
+useEffect(() => {
+  console.log(values);
+}, values);
+
+  const [success, setSuccess] = useState(false);
+if (success) {
+  console.log("success true");
+}
+if (!success) {
+  console.log("success false")
+}
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -22,10 +37,10 @@ function App() {
         </form> */}
         {/* <Login /> */}
       <Routes>
-      <Route path='/' element={<Login />}/>
+      <Route path='/' element={<Login success={success} setSuccess={setSuccess} setValues={setValues} values={values}/>}/>
             <Route path="/register" element={<Register/>} />
 
-      <Route path="/home" element={<HomeComponent/>} />
+      <Route path="/home" element={<HomeComponent setSuccess={setSuccess} setValues={setValues}/>} />
       </Routes>
 
     </div>
