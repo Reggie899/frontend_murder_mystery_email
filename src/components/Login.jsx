@@ -50,11 +50,17 @@ const Login = ({ setSuccess, success, setValues, values }) => {
       .catch((err) => setError(err.response.data.message));
   };
 
-  const alertHello = () =>{alert("hello")}
+  const register = () => {
+    alert("Function >Registering< currently out of order. Please try again later!");
+  };
 
   return (
     <>
       <header className="App-header">
+        <div className="register">
+          {" "}
+          <p onClick={register}>Register</p>
+        </div>
         <img src={logo} className="App-logo" alt="logo" />
         <form>
           <input
@@ -64,8 +70,8 @@ const Login = ({ setSuccess, success, setValues, values }) => {
             type="email"
             placeholder="Email"
             // autoFocus
-            // onFocus={e => e.currentTarget.select()}         
-             />
+            // onFocus={e => e.currentTarget.select()}
+          />
           <input
             value={values.password}
             onChange={handleChange}
@@ -73,11 +79,12 @@ const Login = ({ setSuccess, success, setValues, values }) => {
             type="password"
             placeholder="Password"
           />
-          <button onClick={handleSubmit}>Login</button>
+                  {success ? null : error}
+
+          <button className="loginButton" onClick={handleSubmit}>Login</button>
         </form>
         {/* {success ? <p>Successfully logged in!</p> : null} */}
         {success ? <img src={spinner} className="spinner" /> : null}
-        {success ? null : error}
       </header>
     </>
   );

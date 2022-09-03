@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 function Logout({ setSuccess, setValues }) {
   const navigate = useNavigate();
 
-  function handlesubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     // alert("boo");
     localStorage.removeItem("accessToken");
@@ -14,7 +14,7 @@ function Logout({ setSuccess, setValues }) {
 
   return (
     <div className="logout">
-      <button onClick={handlesubmit}>Logout </button>
+      <button className="logoutButton" onClick={handleSubmit}>Logout</button>
     </div>
   );
 }

@@ -17,14 +17,19 @@ function HomeComponent({setSuccess, setValues}) {
 
   return (
     <div className="home">
-        <Logout setSuccess={setSuccess} setValues={setValues}/>
+
+        <Logout className="logoutBotton" setSuccess={setSuccess} setValues={setValues}/>
+        
+        <h3>Welcome, Jimmy</h3>
+
+        {navigationBarItems}
+
       <div className="container">
         <div className="sidebar">
             <Mails />
         </div>
         <div className="rightside">
           <div className="navigationBar">
-              {navigationBarItems}
               </div> 
           <div className="mailview"></div>
         </div>

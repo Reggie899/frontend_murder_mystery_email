@@ -2,18 +2,22 @@
   box-sizing: border-box;
 }
 
+h1 {
+  color: white;
+}
+
 .App,
 .home {
   text-align: center;
 }
 
 .App-logo {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   border-radius: 50%;
   height: 185px;
   pointer-events: none;
   width: 210px;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -49,10 +53,17 @@ input {
   font-size: 30px;
 }
 
-button {
-  background-color: rgb(226, 191, 102);
+.loginButton {
+  background-color: rgb(238, 194, 47);
   font-size: 20px;
   width: 100px;
+  margin-top: 2em;
+  padding: 1em;
+  border-radius: 50%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgba(165, 42, 42, 0.612);
+  font-weight: bolder;
+  margin-bottom: 2em;
 }
 
 .container {
@@ -89,11 +100,40 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding: 1em;
 }
 
 .spinner {
   height: 50px;
   width: auto;
+}
+
+.register {
+  width: 100%;
+  /* border: 2px solid magenta; */
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1em;
+  color: rgb(238, 194, 47);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logout {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding-right: 1em;
+}
+
+.logoutButton {
+  padding: 0.5em;
+}
+
+.register p:hover,
+.loginButton:hover, 
+.menu div:hover, .logoutButton:hover {
+  font-weight: bolder;
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
