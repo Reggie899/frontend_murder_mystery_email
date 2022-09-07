@@ -16,6 +16,7 @@ function App() {
 useEffect(() => {
   console.log(values);
 }, values);
+const [resmail, setResmail] = useState([]);
 
   const [success, setSuccess] = useState(false);
 if (success) {
@@ -40,7 +41,7 @@ if (!success) {
       <Route path='/' element={<Login success={success} setSuccess={setSuccess} setValues={setValues} values={values}/>}/>
             <Route path="/register" element={<Register/>} />
 
-      <Route path="/home" element={<HomeComponent setSuccess={setSuccess} setValues={setValues}/>} />
+      <Route path="/home" element={<HomeComponent setSuccess={setSuccess} setValues={setValues} setResmail={setResmail} resmail={resmail}/>} />
       </Routes>
 
     </div>

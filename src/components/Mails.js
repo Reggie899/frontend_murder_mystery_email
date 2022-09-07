@@ -8,12 +8,12 @@
 
 
 
-function Mails() {
+function Mails(resmail) {
     return (
       <div className="mail">
-       <li>
-Item 1 
-       </li>
+       {/* <li> */}
+Item 1 {resmail}
+       {/* </li> */}
       </div>
     );
   }

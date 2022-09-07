@@ -53,6 +53,23 @@ input {
   font-size: 30px;
 }
 
+.mailList {
+  list-style: none;
+  border: 2px solid gold;
+  /* padding-top: 0.2em;
+  padding-bottom: 0.2em; */
+  overflow: hidden;
+
+}
+
+.mailList p {
+  max-height: 2em;
+  border: 1px solid magenta;
+width: 200%;
+display: flex;
+justify-content: flex-start;
+}
+
 .loginButton {
   background-color: rgb(238, 194, 47);
   font-size: 20px;
