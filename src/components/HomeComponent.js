@@ -25,25 +25,6 @@ function HomeComponent({ setSuccess, setValues, setResmail, resmail }) {
         .then( (res) => {
            setSaveData(res.data.read);
           console.log("savedData", saveData);
-
-        //   return res;
-        // })
-        // .then((res) => {
-          // setResmail(
-            // res.data.read.map((mails, index) => (
-            //   // Only do this if items have no stable IDs
-            //   <li
-            //     key={index}
-            //     className="mailList"
-            //     onClick={() => {
-            //       setChosenData1(saveData[index].time);
-            //       setChosenData2(saveData[index].subject);
-            //     }}
-            //   >
-            //     <p> {mails.subject}</p>
-            //   </li>
-          //   ))
-          // );
           return res;
         })
         // .then((res) => console.log("fetched response", res.data))
@@ -58,13 +39,103 @@ function HomeComponent({ setSuccess, setValues, setResmail, resmail }) {
     requestRead();
   }, [])
 
+
+  async function requestUnread() {
+    // e.preventDefault();
+    try {
+       axios
+        .get("https://backend-murder-mystery.herokuapp.com/read/unread", {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+        .then( (res) => {
+           setSaveData(res.data.unread);
+          console.log("savedData", saveData);
+          return res;
+        })
+        // .then((res) => console.log("fetched response", res.data))
+        .then(console.log("chosenDat", chosenData1, chosenData2));
+
+      // .then(console.log("hello"))
+      // alert("lol")
+    } catch {}
+  }
+
+  async function requestSpam() {
+    // e.preventDefault();
+    try {
+       axios
+        .get("https://backend-murder-mystery.herokuapp.com/read/spam", {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+        .then( (res) => {
+           setSaveData(res.data.spam);
+          console.log("savedData", saveData);
+          return res;
+        })
+        // .then((res) => console.log("fetched response", res.data))
+        .then(console.log("chosenDat", chosenData1, chosenData2));
+
+      // .then(console.log("hello"))
+      // alert("lol")
+    } catch {}
+  }
+
+  async function requestDeleted() {
+    // e.preventDefault();
+    try {
+       axios
+        .get("https://backend-murder-mystery.herokuapp.com/read/deleted", {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+        .then( (res) => {
+           setSaveData(res.data.deleted);
+          console.log("savedData", saveData);
+          return res;
+        })
+        // .then((res) => console.log("fetched response", res.data))
+        .then(console.log("chosenDat", chosenData1, chosenData2));
+
+      // .then(console.log("hello"))
+      // alert("lol")
+    } catch {}
+  }
+
+  async function requestSent() {
+    // e.preventDefault();
+    try {
+       axios
+        .get("https://backend-murder-mystery.herokuapp.com/read/sent", {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+        .then( (res) => {
+           setSaveData(res.data.sent);
+          console.log("savedData", saveData);
+          return res;
+        })
+        // .then((res) => console.log("fetched response", res.data))
+        .then(console.log("chosenDat", chosenData1, chosenData2));
+
+      // .then(console.log("hello"))
+      // alert("lol")
+    } catch {}
+  }
+
   const navigationBarItems = (
     <div className="menu">
-      <div>All</div>
       <div onClick={requestRead}>Read</div>
-      <div>Unread</div>
-      <div>Spam</div>
-      <div>Deleted</div>
+      <div onClick={requestUnread}>Unread</div>
+      <div onClick={requestSpam}>Spam</div>
+      <div onClick={requestDeleted}>Deleted</div>
+      <div onClick={requestSent}>Sent</div>
+
       {/* <div>
 <input type="search"/></div> */}
     </div>
