@@ -1,130 +1,134 @@
 import React, { useState, useEffect } from "react";
-import Mails from "./Mails";
 import Logout from "./Logout";
 import axios from "axios";
 
-function HomeComponent({ setSuccess, setValues, setResmail, resmail }) {
+function HomeComponent({ setSuccess, setValues }) {
   const [saveData, setSaveData] = useState([]);
   const [chosenData1, setChosenData1] = useState("");
   const [chosenData2, setChosenData2] = useState("");
-
-  // const dataSafe = (e) => {
-  //   e.preventDefault();
-  //   setChosenData(saveData[{index}])
-  // }
+  const [chosenData3, setChosenData3] = useState("");
+  const [chosenData4, setChosenData4] = useState("");
+  const [chosenData5, setChosenData5] = useState("");
+  const [chosenData6, setChosenData6] = useState("");
 
   async function requestRead() {
-    // e.preventDefault();
     try {
-       axios
+      axios
         .get("https://backend-murder-mystery.herokuapp.com/read/read", {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         })
-        .then( (res) => {
-           setSaveData(res.data.read);
+        .then((res) => {
+          setSaveData(res.data.read);
           console.log("savedData", saveData);
           return res;
         })
-        // .then((res) => console.log("fetched response", res.data))
-        .then(console.log("chosenDat", chosenData1, chosenData2));
-
-      // .then(console.log("hello"))
-      // alert("lol")
+        .then((res) => {
+          setChosenData1(res.data.read[0].time);
+          setChosenData2(res.data.read[0].subject);
+          setChosenData3(res.data.read[0].date);
+          setChosenData4(res.data.read[0].sender);
+          setChosenData5(res.data.read[0].messagebody);
+          setChosenData6(res.data.read[0].receiver);
+        })
     } catch {}
   }
 
   useEffect(() => {
     requestRead();
-  }, [])
+  }, []);
 
 
   async function requestUnread() {
-    // e.preventDefault();
     try {
-       axios
+      axios
         .get("https://backend-murder-mystery.herokuapp.com/read/unread", {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         })
-        .then( (res) => {
-           setSaveData(res.data.unread);
-          console.log("savedData", saveData);
+        .then((res) => {
+          setSaveData(res.data.unread);
           return res;
         })
-        // .then((res) => console.log("fetched response", res.data))
-        .then(console.log("chosenDat", chosenData1, chosenData2));
-
-      // .then(console.log("hello"))
-      // alert("lol")
+        .then((res) => {
+          setChosenData1(res.data.unread[0].time);
+          setChosenData2(res.data.unread[0].subject);
+          setChosenData3(res.data.unread[0].date);
+          setChosenData4(res.data.unread[0].sender);
+          setChosenData5(res.data.unread[0].messagebody);
+          setChosenData6(res.data.unread[0].receiver);
+        })
     } catch {}
   }
 
   async function requestSpam() {
-    // e.preventDefault();
     try {
-       axios
+      axios
         .get("https://backend-murder-mystery.herokuapp.com/read/spam", {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         })
-        .then( (res) => {
-           setSaveData(res.data.spam);
-          console.log("savedData", saveData);
+        .then((res) => {
+          setSaveData(res.data.spam);
           return res;
         })
-        // .then((res) => console.log("fetched response", res.data))
-        .then(console.log("chosenDat", chosenData1, chosenData2));
-
-      // .then(console.log("hello"))
-      // alert("lol")
+        .then((res) => {
+          setChosenData1(res.data.spam[0].time);
+          setChosenData2(res.data.spam[0].subject);
+          setChosenData3(res.data.spam[0].date);
+          setChosenData4(res.data.spam[0].sender);
+          setChosenData5(res.data.spam[0].messagebody);
+          setChosenData6(res.data.spam[0].receiver);
+        })
     } catch {}
   }
 
   async function requestDeleted() {
-    // e.preventDefault();
     try {
-       axios
+      axios
         .get("https://backend-murder-mystery.herokuapp.com/read/deleted", {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         })
-        .then( (res) => {
-           setSaveData(res.data.deleted);
-          console.log("savedData", saveData);
+        .then((res) => {
+          setSaveData(res.data.deleted);
           return res;
         })
-        // .then((res) => console.log("fetched response", res.data))
-        .then(console.log("chosenDat", chosenData1, chosenData2));
-
-      // .then(console.log("hello"))
-      // alert("lol")
+        .then((res) => {
+          setChosenData1(res.data.deleted[0].time);
+          setChosenData2(res.data.deleted[0].subject);
+          setChosenData3(res.data.deleted[0].date);
+          setChosenData4(res.data.deleted[0].sender);
+          setChosenData5(res.data.deleted[0].messagebody);
+          setChosenData6(res.data.deleted[0].receiver);
+        })
     } catch {}
   }
 
   async function requestSent() {
-    // e.preventDefault();
     try {
-       axios
+      axios
         .get("https://backend-murder-mystery.herokuapp.com/read/sent", {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         })
-        .then( (res) => {
-           setSaveData(res.data.sent);
-          console.log("savedData", saveData);
+        .then((res) => {
+          setSaveData(res.data.sent);
           return res;
         })
-        // .then((res) => console.log("fetched response", res.data))
-        .then(console.log("chosenDat", chosenData1, chosenData2));
-
-      // .then(console.log("hello"))
-      // alert("lol")
+        .then((res) => {
+          setChosenData1(res.data.sent[0].time);
+          setChosenData2(res.data.sent[0].subject);
+          setChosenData3(res.data.sent[0].date);
+          setChosenData4(res.data.sent[0].sender);
+          setChosenData5(res.data.sent[0].messagebody);
+          setChosenData6(res.data.sent[0].receiver);
+        })
     } catch {}
   }
 
@@ -135,13 +139,15 @@ function HomeComponent({ setSuccess, setValues, setResmail, resmail }) {
       <div onClick={requestSpam}>Spam</div>
       <div onClick={requestDeleted}>Deleted</div>
       <div onClick={requestSent}>Sent</div>
-
-      {/* <div>
-<input type="search"/></div> */}
     </div>
   );
 
-  // setResmail("");
+  const writeNew = () => {
+    alert(
+      "Function >Write new e-mail< currently out of order. Please try again later!"
+    );
+  };
+
 
   return (
     <div className="home">
@@ -152,29 +158,43 @@ function HomeComponent({ setSuccess, setValues, setResmail, resmail }) {
       />
 
       <h3>Welcome, Jimmy</h3>
-
+      <button onClick={writeNew} className="newMail">Write new e-mail</button>
       {navigationBarItems}
-
       <div className="container">
         <div className="sidebar">
-          {/* {resmail} */}
-          {/* <Mails resmail={resmail}/> */}
-          {  saveData.map((mails, index) => (
-              // Only do this if items have no stable IDs
-              <li
-                key={index}
-                className="mailList"
-                onClick={() => {
-                  setChosenData1(saveData[index].time);
-                  setChosenData2(saveData[index].subject);
-                }}
-              >
-                <p> {mails.subject}</p>
-              </li>))}
+          {saveData.map((mails, index) => (
+            // Only do this if items have no stable IDs
+            <li
+              key={index}
+              className="mailList"
+              onClick={() => {
+                setChosenData1(saveData[index].time);
+                setChosenData2(saveData[index].subject);
+                setChosenData3(saveData[index].date);
+                setChosenData4(saveData[index].sender);
+                setChosenData5(saveData[index].messagebody);
+                setChosenData6(saveData[index].receiver);
+              }
+          }
+            >
+              <p> {mails.subject}</p>
+            </li>
+          ))}
         </div>
         <div className="rightside">
-          <div className="navigationBar">{chosenData1}</div>
-          <div className="mailview">{chosenData2}</div>
+          <div className="navigationBar">
+            <div><span>time:</span>{chosenData1}</div>
+            <div><span>date:</span>{chosenData3}</div>
+            <div><span>receiver:</span>{chosenData6}</div>
+            <div><span>sender:</span>{chosenData4}</div>
+          </div>
+
+          <div className="mailview">
+            {" "}
+            <div className="subject">Subject: {chosenData2}</div>
+            <br/>
+            <div>{chosenData5}</div>
+          </div>
         </div>
       </div>
     </div>

@@ -62,6 +62,7 @@ const Login = ({ setSuccess, success, setValues, values }) => {
           <p onClick={register}>Register</p>
         </div>
         <img src={logo} className="App-logo" alt="logo" />
+        <h1>We're not perfect, but honest, free, secure and we have really cool features sometimes!</h1>
         <form>
           <input
             value={values.email}
