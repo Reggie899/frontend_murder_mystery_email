@@ -67,6 +67,7 @@ input {
   overflow: hidden;
 }
 
+
 .mailList p {
   max-height: 2em;
   /* border: 1px solid magenta; */
@@ -213,6 +214,10 @@ background-color: brown; */
 .logoutButton:hover {
   font-weight: bolder;
   cursor: pointer;
+}
+
+.chosenData7 {
+  text-decoration: underline;
 }
 
 h1 {
