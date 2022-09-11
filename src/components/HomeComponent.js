@@ -23,6 +23,7 @@ function HomeComponent({ setSuccess, setValues }) {
       setSecurity1(security1 + 1);
       setSecurity2(security2 + 1);
       setSecurity3(security3 + 1);
+      setChosenData8(null);
 
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/read", {
@@ -51,9 +52,11 @@ function HomeComponent({ setSuccess, setValues }) {
   }, []);
 
   async function requestUnread() {
-    setSecurity1(1);
-    setSecurity2(1);
-    setSecurity3(1);
+    setSecurity1(security1 - 1);
+    setSecurity2(security2 - 1);
+    setSecurity3(security3 - 1);
+    setChosenData8(null);
+
     try {
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/unread", {
@@ -77,9 +80,10 @@ function HomeComponent({ setSuccess, setValues }) {
   }
 
   async function requestSpam() {
-    setSecurity1(1);
-    setSecurity2(1);
-    setSecurity3(1);
+    setSecurity1(security1 - 1);
+    setSecurity2(security2 - 1);
+    setSecurity3(security3 - 1);
+    setChosenData8(null);
 
     try {
       axios
@@ -104,9 +108,11 @@ function HomeComponent({ setSuccess, setValues }) {
   }
 
   async function requestDeleted() {
-    setSecurity1(1);
-    setSecurity2(1);
-    setSecurity3(1);
+    setSecurity1(security1 - 1);
+    setSecurity2(security2 - 1);
+    setSecurity3(security3 - 1);
+    setChosenData8(null);
+
     try {
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/deleted", {
@@ -130,9 +136,11 @@ function HomeComponent({ setSuccess, setValues }) {
   }
 
   async function requestSent() {
-    setSecurity1(1);
-    setSecurity2(1);
-    setSecurity3(1);
+    setSecurity1(security1 - 1);
+    setSecurity2(security2 - 1);
+    setSecurity3(security3 - 1);
+    setChosenData8(null);
+
     try {
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/sent", {
@@ -175,15 +183,15 @@ function HomeComponent({ setSuccess, setValues }) {
     <div>
       <div>
         1. Option: <span></span>{" "}
-        <button onClick={() => setSecurity1(2)}>Restore</button>
+        <button onClick={() => setSecurity1(3)}>Restore</button>
       </div>
       <div>
         2. Option: <span></span>{" "}
-        <button onClick={() => setSecurity2(2)}>Restore</button>
+        <button onClick={() => setSecurity2(3)}>Restore</button>
       </div>
       <div>
         3. Option: <span></span>{" "}
-        <button onClick={() => setSecurity3(2)}>Restore</button>
+        <button onClick={() => setSecurity3(3)}>Restore</button>
       </div>
     </div>
   );
@@ -221,45 +229,61 @@ function HomeComponent({ setSuccess, setValues }) {
               <p> {mails.subject}</p>
             </li>
           ))}
-          {security1 > 1 ? (
+          {security1 > 2 ? (
             <li className="mailList">
-              <p onClick={() => {
-                          setChosenData1("9.45 am");
-                          setChosenData2("I have compromising material of you");
-                          setChosenData3("2022-09-16");
-                          setChosenData4("Mr. XXX");
-                          setChosenData5("Brandson, I have comprising material of you. If you don't want the world to see it, leave an envelope at 3pm next Monday behind the phone booth at Watson corner. Otherwise the world will see very private parts of you.");
-                          setChosenData6("Jimmy Brandson");
-                          setChosenData7(null);
-              }}>I have compromising material of you</p>
+              <p
+                onClick={() => {
+                  setChosenData1("9.45 am");
+                  setChosenData2("I have compromising material of you");
+                  setChosenData3("2022-09-16");
+                  setChosenData4("Mr. XXX");
+                  setChosenData5(
+                    "Brandson, I have comprising material of you. If you don't want the world to see it, leave an envelope at 3pm next Monday behind the phone booth at Watson corner. Otherwise the world will see very private parts of you."
+                  );
+                  setChosenData6("Jimmy Brandson");
+                  setChosenData7(null);
+                }}
+              >
+                I have compromising material of you
+              </p>
             </li>
           ) : null}
-          {security2 > 1 ? (
-              <li className="mailList">
-              <p onClick={() => {
-                          setChosenData1("07.14 am");
-                          setChosenData2("Swindon Town Fair");
-                          setChosenData3("2022-09-21");
-                          setChosenData4("City Committee");
-                          setChosenData5("Dear Mr. Brandson, we would love to invite you to the town fair 2022 in Swindon. Your last year's performance was delightful. And our committee would like to offer you another role as clown. Payment is possible, but we would appreciate it if you could perform and offer your salary to our charity. Please let us know what you think. Best of regards, your Swindon City Committee");
-                          setChosenData6("Jimmy Brandson");
-                          setChosenData7(null);
-              }}>Swindon Town Fair</p>
+          {security2 > 2 ? (
+            <li className="mailList">
+              <p
+                onClick={() => {
+                  setChosenData1("07.14 am");
+                  setChosenData2("Swindon Town Fair");
+                  setChosenData3("2022-09-21");
+                  setChosenData4("City Committee");
+                  setChosenData5(
+                    "Dear Mr. Brandson, we would love to invite you to the town fair 2022 in Swindon. Your last year's performance was delightful. And our committee would like to offer you another role as clown. Payment is possible, but we would appreciate it if you could perform and offer your salary to our charity. Please let us know what you think. Best of regards, your Swindon City Committee"
+                  );
+                  setChosenData6("Jimmy Brandson");
+                  setChosenData7(null);
+                }}
+              >
+                Swindon Town Fair
+              </p>
             </li>
           ) : null}
-          {security3 > 1 ? (
-             <li className="mailList">
-             <p onClick={() => {
-                         setChosenData1("06.02 pm");
-                         setChosenData2("Flight Booking Confirmation");
-                         setChosenData3("2022-09-29");
-                         setChosenData4("Safeflights.com");
-                         setChosenData5("Please see your booking confirmation below");
-                         setChosenData6("Jimmy Brandson");
-                         setChosenData7(false);
-                         setChosenData8(true);
-             }}>Flight Booking Confirmation</p>
-           </li>
+          {security3 > 2 ? (
+            <li className="mailList">
+              <p
+                onClick={() => {
+                  setChosenData1("06.02 pm");
+                  setChosenData2("Flight Booking Confirmation");
+                  setChosenData3("2022-09-29");
+                  setChosenData4("Safeflights.com");
+                  setChosenData5("Please see your booking confirmation below");
+                  setChosenData6("Jimmy Brandson");
+                  setChosenData7(false);
+                  setChosenData8(true);
+                }}
+              >
+                Flight Booking Confirmation
+              </p>
+            </li>
           ) : null}
         </div>
         <div className="rightside">
@@ -295,8 +319,7 @@ function HomeComponent({ setSuccess, setValues }) {
               </div>
             ) : null}
             {chosenData7 && seeMore ? restoreBlock : null}
-            {chosenData8 ? <img src={booking}/> : null}
-
+            {chosenData8 ? <img src={booking} /> : null}
           </div>
         </div>
       </div>
