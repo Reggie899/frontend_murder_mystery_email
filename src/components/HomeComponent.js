@@ -17,12 +17,11 @@ function HomeComponent({ setSuccess, setValues }) {
   const [security1, setSecurity1] = useState(0);
   const [security2, setSecurity2] = useState(0);
   const [security3, setSecurity3] = useState(0);
+  const [seeSecurity, setSeeSecurity] = useState(false);
 
   async function requestRead() {
     try {
-      setSecurity1(security1 + 1);
-      setSecurity2(security2 + 1);
-      setSecurity3(security3 + 1);
+      setSeeSecurity(true);
       setChosenData8(null);
 
       axios
@@ -52,9 +51,7 @@ function HomeComponent({ setSuccess, setValues }) {
   }, []);
 
   async function requestUnread() {
-    setSecurity1(security1 - 1);
-    setSecurity2(security2 - 1);
-    setSecurity3(security3 - 1);
+  setSeeSecurity(false)
     setChosenData8(null);
 
     try {
@@ -80,9 +77,7 @@ function HomeComponent({ setSuccess, setValues }) {
   }
 
   async function requestSpam() {
-    setSecurity1(security1 - 1);
-    setSecurity2(security2 - 1);
-    setSecurity3(security3 - 1);
+    setSeeSecurity(false)
     setChosenData8(null);
 
     try {
@@ -108,9 +103,7 @@ function HomeComponent({ setSuccess, setValues }) {
   }
 
   async function requestDeleted() {
-    setSecurity1(security1 - 1);
-    setSecurity2(security2 - 1);
-    setSecurity3(security3 - 1);
+    setSeeSecurity(false)
     setChosenData8(null);
 
     try {
@@ -136,9 +129,7 @@ function HomeComponent({ setSuccess, setValues }) {
   }
 
   async function requestSent() {
-    setSecurity1(security1 - 1);
-    setSecurity2(security2 - 1);
-    setSecurity3(security3 - 1);
+    setSeeSecurity(false)
     setChosenData8(null);
 
     try {
@@ -183,15 +174,15 @@ function HomeComponent({ setSuccess, setValues }) {
     <div>
       <div>
         1. Option: <span></span>{" "}
-        <button onClick={() => setSecurity1(3)}>Restore</button>
+        <button onClick={() => {setSeeSecurity(true); setSecurity1(1)}}>Restore</button>
       </div>
       <div>
         2. Option: <span></span>{" "}
-        <button onClick={() => setSecurity2(3)}>Restore</button>
+        <button onClick={() => {setSeeSecurity(true); setSecurity2(1)}}>Restore</button>
       </div>
       <div>
         3. Option: <span></span>{" "}
-        <button onClick={() => setSecurity3(3)}>Restore</button>
+        <button onClick={() => {setSeeSecurity(true); setSecurity3(1)}}>Restore</button>
       </div>
     </div>
   );
@@ -224,12 +215,14 @@ function HomeComponent({ setSuccess, setValues }) {
                 setChosenData5(saveData[index].messagebody);
                 setChosenData6(saveData[index].receiver);
                 setChosenData7(saveData[index].link);
+                setChosenData8(null);
+
               }}
             >
               <p> {mails.subject}</p>
             </li>
           ))}
-          {security1 > 2 ? (
+          {(security1 > 0 && seeSecurity) ? (
             <li className="mailList">
               <p
                 onClick={() => {
@@ -242,13 +235,15 @@ function HomeComponent({ setSuccess, setValues }) {
                   );
                   setChosenData6("Jimmy Brandson");
                   setChosenData7(null);
+                  setChosenData8(null);
+
                 }}
               >
                 I have compromising material of you
               </p>
             </li>
           ) : null}
-          {security2 > 2 ? (
+          {(security2 > 0 && seeSecurity) ? (
             <li className="mailList">
               <p
                 onClick={() => {
@@ -261,13 +256,15 @@ function HomeComponent({ setSuccess, setValues }) {
                   );
                   setChosenData6("Jimmy Brandson");
                   setChosenData7(null);
+                  setChosenData8(null);
+
                 }}
               >
                 Swindon Town Fair
               </p>
             </li>
           ) : null}
-          {security3 > 2 ? (
+          {(security3 > 0 && seeSecurity) ? (
             <li className="mailList">
               <p
                 onClick={() => {

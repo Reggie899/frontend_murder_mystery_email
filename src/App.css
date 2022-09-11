@@ -102,7 +102,7 @@ input {
   height: 100%;
   width: 35%;
   text-align: start;
-  overflow: hidden;
+  /* overflow: hidden; */
 
 }
 
