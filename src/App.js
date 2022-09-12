@@ -10,6 +10,8 @@ import HomeComponent from './components/HomeComponent.js';
 
 import Register from "./components/Register";
 
+import Loggedout from "./components/Loggedout"
+
 
 function App() {
   const [values, setValues] = useState({  email: "", password: "" });
@@ -42,6 +44,8 @@ if (!success) {
             <Route path="/register" element={<Register/>} />
 
       <Route path="/home" element={<HomeComponent setSuccess={setSuccess} setValues={setValues} setResmail={setResmail} resmail={resmail}/>} />
+      <Route path="/loggedout" element={<Loggedout/>} />
+
       </Routes>
 
     </div>

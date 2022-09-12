@@ -18,11 +18,25 @@ function HomeComponent({ setSuccess, setValues }) {
   const [security2, setSecurity2] = useState(0);
   const [security3, setSecurity3] = useState(0);
   const [seeSecurity, setSeeSecurity] = useState(false);
+  const [seeOption1, setSeeOption1] = useState(true);
+  const [seeOption2, setSeeOption2] = useState(true);
+  const [seeOption3, setSeeOption3] = useState(true);
+  const [selected1, setSelected1] = useState(false);
+  const [selected2, setSelected2] = useState(false);
+  const [selected3, setSelected3] = useState(false);
+  const [selected4, setSelected4] = useState(false);
+  const [selected5, setSelected5] = useState(false);
+
 
   async function requestRead() {
     try {
       setSeeSecurity(true);
       setChosenData8(null);
+setSelected1(true);
+setSelected2(false);
+setSelected3(false);
+setSelected4(false);
+setSelected5(false);
 
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/read", {
@@ -43,7 +57,9 @@ function HomeComponent({ setSuccess, setValues }) {
           setChosenData5(res.data.read[0].messagebody);
           setChosenData6(res.data.read[0].receiver);
         });
-    } catch {}
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   useEffect(() => {
@@ -51,9 +67,13 @@ function HomeComponent({ setSuccess, setValues }) {
   }, []);
 
   async function requestUnread() {
-  setSeeSecurity(false)
+    setSeeSecurity(false);
     setChosenData8(null);
-
+    setSelected1(false);
+    setSelected2(true);
+    setSelected3(false);
+    setSelected4(false);
+    setSelected5(false);
     try {
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/unread", {
@@ -73,13 +93,19 @@ function HomeComponent({ setSuccess, setValues }) {
           setChosenData5(res.data.unread[0].messagebody);
           setChosenData6(res.data.unread[0].receiver);
         });
-    } catch {}
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   async function requestSpam() {
-    setSeeSecurity(false)
+    setSeeSecurity(false);
     setChosenData8(null);
-
+    setSelected1(false);
+    setSelected2(false);
+    setSelected3(true);
+    setSelected4(false);
+    setSelected5(false);
     try {
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/spam", {
@@ -99,13 +125,19 @@ function HomeComponent({ setSuccess, setValues }) {
           setChosenData5(res.data.spam[0].messagebody);
           setChosenData6(res.data.spam[0].receiver);
         });
-    } catch {}
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   async function requestDeleted() {
-    setSeeSecurity(false)
+    setSeeSecurity(false);
     setChosenData8(null);
-
+    setSelected1(false);
+    setSelected2(false);
+    setSelected3(false);
+    setSelected4(true);
+    setSelected5(false);
     try {
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/deleted", {
@@ -125,13 +157,19 @@ function HomeComponent({ setSuccess, setValues }) {
           setChosenData5(res.data.deleted[0].messagebody);
           setChosenData6(res.data.deleted[0].receiver);
         });
-    } catch {}
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   async function requestSent() {
-    setSeeSecurity(false)
+    setSeeSecurity(false);
     setChosenData8(null);
-
+    setSelected1(false);
+    setSelected2(false);
+    setSelected3(false);
+    setSelected4(false);
+    setSelected5(true);
     try {
       axios
         .get("https://backend-murder-mystery.herokuapp.com/read/sent", {
@@ -151,16 +189,18 @@ function HomeComponent({ setSuccess, setValues }) {
           setChosenData5(res.data.sent[0].messagebody);
           setChosenData6(res.data.sent[0].receiver);
         });
-    } catch {}
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   const navigationBarItems = (
     <div className="menu">
-      <div onClick={requestRead}>Read</div>
-      <div onClick={requestUnread}>Unread</div>
-      <div onClick={requestSpam}>Spam</div>
-      <div onClick={requestDeleted}>Deleted</div>
-      <div onClick={requestSent}>Sent</div>
+      <div className={selected1 ? "bold" : null} onClick={requestRead}>Read</div>
+      <div className={selected2 ? "bold" : null} onClick={requestUnread}>Unread</div>
+      <div className={selected3 ? "bold" : null} onClick={requestSpam}>Spam</div>
+      <div className={selected4 ? "bold" : null} onClick={requestDeleted}>Deleted</div>
+      <div className={selected5 ? "bold" : null} onClick={requestSent}>Sent</div>
     </div>
   );
 
@@ -172,18 +212,48 @@ function HomeComponent({ setSuccess, setValues }) {
 
   const restoreBlock = (
     <div>
-      <div>
-        1. Option: <span></span>{" "}
-        <button onClick={() => {setSeeSecurity(true); setSecurity1(1)}}>Restore</button>
-      </div>
-      <div>
-        2. Option: <span></span>{" "}
-        <button onClick={() => {setSeeSecurity(true); setSecurity2(1)}}>Restore</button>
-      </div>
-      <div>
-        3. Option: <span></span>{" "}
-        <button onClick={() => {setSeeSecurity(true); setSecurity3(1)}}>Restore</button>
-      </div>
+      {seeOption1 ? (
+        <div>
+          Subject: "I have compromising material of you" <span></span>{" "}
+          <button
+            onClick={() => {
+              setSeeSecurity(true);
+              setSecurity1(1);
+              setSeeOption1(false);
+            }}
+          >
+            Restore
+          </button>
+        </div>
+      ) : null}
+      {seeOption2 ? (
+        <div>
+          Subject: "Swindon Town Fair" <span></span>{" "}
+          <button
+            onClick={() => {
+              setSeeSecurity(true);
+              setSecurity2(1);
+              setSeeOption2(false);
+            }}
+          >
+            Restore
+          </button>
+        </div>
+      ) : null}
+      {seeOption3 ? (
+        <div>
+          Subject: "Flight Booking Confirmation" <span></span>{" "}
+          <button
+            onClick={() => {
+              setSeeSecurity(true);
+              setSecurity3(1);
+              setSeeOption3(false);
+            }}
+          >
+            Restore
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 
@@ -216,13 +286,12 @@ function HomeComponent({ setSuccess, setValues }) {
                 setChosenData6(saveData[index].receiver);
                 setChosenData7(saveData[index].link);
                 setChosenData8(null);
-
               }}
             >
               <p> {mails.subject}</p>
             </li>
           ))}
-          {(security1 > 0 && seeSecurity) ? (
+          {security1 > 0 && seeSecurity ? (
             <li className="mailList">
               <p
                 onClick={() => {
@@ -236,14 +305,13 @@ function HomeComponent({ setSuccess, setValues }) {
                   setChosenData6("Jimmy Brandson");
                   setChosenData7(null);
                   setChosenData8(null);
-
                 }}
               >
                 I have compromising material of you
               </p>
             </li>
           ) : null}
-          {(security2 > 0 && seeSecurity) ? (
+          {security2 > 0 && seeSecurity ? (
             <li className="mailList">
               <p
                 onClick={() => {
@@ -257,14 +325,13 @@ function HomeComponent({ setSuccess, setValues }) {
                   setChosenData6("Jimmy Brandson");
                   setChosenData7(null);
                   setChosenData8(null);
-
                 }}
               >
                 Swindon Town Fair
               </p>
             </li>
           ) : null}
-          {(security3 > 0 && seeSecurity) ? (
+          {security3 > 0 && seeSecurity ? (
             <li className="mailList">
               <p
                 onClick={() => {

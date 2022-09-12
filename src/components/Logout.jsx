@@ -7,7 +7,7 @@ function Logout({ setSuccess, setValues }) {
     event.preventDefault();
     // alert("boo");
     localStorage.removeItem("accessToken");
-    navigate("/");
+    navigate("/loggedout");
     setSuccess(false);
     setValues({ email: "", password: "" });
   }

@@ -97,6 +97,11 @@ input {
   flex-direction: row;
 }
 
+.bold {
+  font-weight: bolder;
+  color: gold;
+}
+
 .container .sidebar {
   border: 2px solid gold;
   height: 100%;
@@ -203,6 +208,18 @@ background-color: brown; */
   justify-content: end;
   padding-right: 1em;
 }
+
+.loggedOut  {
+  color: yellow;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .loggedOutGeneral {
+  border: 2px solid gold;
+} */
 
 .logoutButton {
   padding: 0.5em;
