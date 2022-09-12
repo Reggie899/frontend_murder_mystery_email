@@ -52,11 +52,14 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 2px solid blue; */
 }
 
 input {
   margin: 2%;
   font-size: 30px;
+  /* width: 60vw; */
+
 }
 
 .mailList {
@@ -275,4 +278,9 @@ h1 {
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (max-width: 600px) {
+  input {
+width: 50vw;  }
 }
