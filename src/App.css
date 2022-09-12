@@ -61,7 +61,7 @@ input {
 
 .mailList {
   list-style: none;
-  border: 2px solid gold;
+  border-bottom: 2px solid gold;
   /* padding-top: 0.2em;
   padding-bottom: 0.2em; */
   overflow: hidden;
@@ -90,6 +90,7 @@ input {
 }
 
 .container {
+  position: relative;
   border: 2px solid gold;
   height: 400px;
   width: 80%;
@@ -107,8 +108,7 @@ input {
   height: 100%;
   width: 35%;
   text-align: start;
-  /* overflow: hidden; */
-
+  overflow:auto;
 }
 
 .sidebar li {
@@ -137,12 +137,19 @@ background-color: brown; */
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow: auto;
 }
 
 .container .mailview {
   text-align: start;
   padding: 5%;
+
+}
+
+.booking {
+  width: 100%;
+height: auto;
 }
 
 .subject {
@@ -151,25 +158,37 @@ background-color: brown; */
 }
 
 .navigationBar {
-  border: 2px solid gold;
+  /* position: fixed; */
+  border-bottom: 2px solid gold;
   min-height: 30%;
   display: flex;
+
   /* justify-content: space-evenly; */
   align-items: center;
 }
 
 .navigationBar div {
-  /* border: 2px solid magenta; */
-  border-right: 1px solid gold;
-  overflow: hidden;
-  font-size: 12px;
-  text-align: start;
   display: flex;
+  /* border: 2px solid magenta; */
+  /* overflow: hidden; */
+  flex-direction: column;
+  font-size: 12px;
+  /* align-items: center; */
+  justify-self: center;
+  /* text-align: start; */
   width: 25%;
   height: 75%;
-  flex-wrap: wrap;
-  align-items: flex-start;
+   flex-wrap: wrap;
+  /*align-items: flex-start; */
   padding: 1% 1% 1% 2% ;
+}
+
+.navbar-br {
+  margin-bottom: 2%;
+}
+
+.border-right {
+  border-right: 1px solid gold;
 }
 
 .navigationBar div span {

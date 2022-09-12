@@ -352,21 +352,22 @@ setSelected5(false);
         </div>
         <div className="rightside">
           <div className="navigationBar">
-            <div>
-              <span>time:</span>
+            <div className="border-right">
+             <span className="navbar-br">time: </span>  <br/>
               {chosenData1}
+           
+            </div>
+            <div className="border-right">
+            <span className="navbar-br">date:</span> <br/>     {chosenData3}
+          
+            </div>
+            <div className="border-right">
+              <span className="navbar-br">receiver:</span>   <br/>   {chosenData6}
+             
             </div>
             <div>
-              <span>date:</span>
-              {chosenData3}
-            </div>
-            <div>
-              <span>receiver:</span>
-              {chosenData6}
-            </div>
-            <div>
-              <span>sender:</span>
-              {chosenData4}
+              <span className="navbar-br">sender:</span> <br/>  {chosenData4}
+             
             </div>
           </div>
 
@@ -378,12 +379,12 @@ setSelected5(false);
             {chosenData7 ? (
               <div>
                 <a onClick={() => setSeeMore(true)} className="chosenData7">
-                  Click here
+                {seeOption1 || seeOption2 || seeOption3 ? <p>Click here</p> : <p>None to restore</p> }  
                 </a>
               </div>
             ) : null}
             {chosenData7 && seeMore ? restoreBlock : null}
-            {chosenData8 ? <img src={booking} /> : null}
+            {chosenData8 ? <img className="booking" src={booking} /> : null}
           </div>
         </div>
       </div>
