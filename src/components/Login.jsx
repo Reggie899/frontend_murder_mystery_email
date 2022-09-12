@@ -13,6 +13,7 @@ const Login = ({ setSuccess, success, setValues, values }) => {
   const navigate = useNavigate();
 
   const [error, setError] = useState("");
+  const [showRegister, setShowRegister] = useState(false);
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
@@ -51,7 +52,13 @@ const Login = ({ setSuccess, success, setValues, values }) => {
   };
 
   const register = () => {
-    alert("Function >Registering< currently out of order. Please try again later!");
+    if (showRegister) {
+      setShowRegister(false)
+    }
+    else {
+      setShowRegister(true)
+    }
+    // alert("Function >Registering< currently out of order. Please try again later!");
   };
 
   return (
@@ -59,7 +66,7 @@ const Login = ({ setSuccess, success, setValues, values }) => {
       <header className="App-header">
         <div className="register">
           {" "}
-          <p onClick={register}>Register</p>
+          {showRegister ? <div>Regsitering currently not available. Please try again later.</div> :  <p onClick={register}>Register</p>}
         </div>
         <img src={logo} className="App-logo" alt="logo" />
         <h1>We're not perfect, but honest, free, secure and we have really cool features sometimes!</h1>

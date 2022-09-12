@@ -26,7 +26,7 @@ function HomeComponent({ setSuccess, setValues }) {
   const [selected3, setSelected3] = useState(false);
   const [selected4, setSelected4] = useState(false);
   const [selected5, setSelected5] = useState(false);
-
+  const [showNewMail, setShowNewMail] = useState(false);
 
   async function requestRead() {
     try {
@@ -205,9 +205,10 @@ setSelected5(false);
   );
 
   const writeNew = () => {
-    alert(
-      "Function >Write new e-mail< currently out of order. Please try again later!"
-    );
+    setShowNewMail(true);
+    // alert(
+    //   "Function >Write new e-mail< currently out of order. Please try again later!"
+    // );
   };
 
   const restoreBlock = (
@@ -266,9 +267,9 @@ setSelected5(false);
       />
 
       <h3>Welcome, Jimmy</h3>
-      <button onClick={writeNew} className="newMail">
+     {showNewMail ? <div>Writing e-mails is currently not available. Try again later.</div> : <button onClick={writeNew} className="newMail">
         Write new e-mail
-      </button>
+      </button>} 
       {navigationBarItems}
       <div className="container">
         <div className="sidebar">
