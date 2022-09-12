@@ -52,12 +52,7 @@ const Login = ({ setSuccess, success, setValues, values }) => {
   };
 
   const register = () => {
-    if (showRegister) {
-      setShowRegister(false)
-    }
-    else {
-      setShowRegister(true)
-    }
+      setShowRegister(true);
     // alert("Function >Registering< currently out of order. Please try again later!");
   };
 
