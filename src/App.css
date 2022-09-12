@@ -84,7 +84,7 @@ input {
   font-size: 20px;
   width: 100px;
   margin-top: 2em;
-  padding: 1em;
+  padding: 1em 1em 1em 0.9em;
   border-radius: 50%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgba(165, 42, 42, 0.612);
