@@ -93,7 +93,7 @@ input {
   position: relative;
   border: 2px solid gold;
   height: 400px;
-  width: 80%;
+  width: 80vw;
   display: flex;
   flex-direction: row;
 }
@@ -204,6 +204,11 @@ height: auto;
   flex-direction: row;
   justify-content: space-evenly;
   padding: 1em;
+}
+
+.menu div {
+  margin: 1%;
+  padding: 1%;
 }
 
 .spinner {
